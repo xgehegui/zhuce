@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>学生注册表单</title>
+		<link rel="stylesheet" href="https://cdn.staticfile.net/twitter-bootstrap/5.1.1/css/bootstrap.min.css">
+		 
+		<!-- 最新的 Bootstrap5 核心 JavaScript 文件 -->
+		<script src="https://cdn.staticfile.net/twitter-bootstrap/5.1.1/js/bootstrap.bundle.min.js"></script>
+		<style>
+			.wrapper{
+				width:600px;
+				margin:0 auto;
+				padding:0 30px;
+				background-color: aliceblue;
+			}
+			h3{
+				text-align: center;
+			}
+			.items{
+				width:280px;
+			}
+			.items input{
+				width:280px;
+				border-radius: 3px;
+				border:1px solid gray;
+				outline:none;
+			}
+			.btn{
+				text-align: center;
+				width:540px;
+			}
+			
+			
+		</style>
+	</head>
+	
+	<body>
+		<div class="wrapper form">			
+			<h3>学生注册表单</h3>
+				<div class="items"></div>
+					<label for="username">姓名<span style="color:red;">*</span></label><br>
+					<input type="text" id="username" class="form-control" placeholder="请输入您的姓名"><br>
+					<label for="number">手机号<span style="color:red;">*</span></label><br>
+					<input type="text" id="number" class="form-control" placeholder="请输入11位手机号"><br>
+					<label for="e-mail">邮箱</label><br>
+					<input type="text" id="e-mail"  class="form-control" placeholder="可选,如:student@school.com"><br>
+					<label for="password">密码<span style="color:red;">*</span></label><br>
+					<input type="password" id="password" class="form-control" placeholder="至少6位,包含字母和数字"><br>
+					<label for="re-password">重复密码<span style="color:red;">*</span></label><br>
+					<input type="password" id="re-password" class="form-control" placeholder="请再次输入密码"><br>
+					<div class="button btn btn-primary"onclick="users()" >注册</div>
+				</div>
+		</div>
+		<script>
+			function users(){
+				let sum = "";
+				const regex1 = /^\d{11}$/;
+				const regex2 = /^[A-Za-z0-9]{6,}$/;
+				
+				let password =document.getElementById("password");
+				let repassword =document.getElementById("re-password");
+				
+				if(document.getElementById("username").value.trim()==""){
+					sum +="请输入用户名";
+				}
+				if(!regex1.test(document.getElementById("number").value)){
+					sum+= "请输入正确的手机号";
+				}
+				if(!regex2.test(password.value)){
+					sum +="请输入正确的密码";
+				}
+				if(password.value != repassword.value){
+					sum +="两密码不同";
+				}
+				if(sum!=""){
+					alert(sum);
+				}else{
+					alert("注册成功");
+				}
+			}
+		</script>
+	</body>
+</html>
